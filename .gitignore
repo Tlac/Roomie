@@ -56,4 +56,4 @@ buck-out/
 *.jsbundle
 
 # env variables
-app-env
+.env
