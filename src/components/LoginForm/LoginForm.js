@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Text, View, Image } from 'react-native';
+import { Text, View, Image, TextInput, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { connect } from 'react-redux';
-import { Card, CardSection, Input, Button, Spinner } from '.././common';
 import { emailChanged, passwordChanged, loginUser } from '../../actions';
+import styles from './LoginForm-style';
 
 class LoginForm extends Component {
 	onEmailChange(text) {
@@ -15,14 +15,13 @@ class LoginForm extends Component {
 
 	onButtonPress() {
 		const { email, password } = this.props;
-
 		this.props.loginUser({ email, password});
 	}
 
 	renderError() {
 		if (this.props.error) {
 			return (
-				<View style={{backgroundColor: 'white'}}>
+				<View style={styles.errorContainer}>
 					<Text style={styles.errorTextStyles}>
 						{this.props.error}
 					</Text>
@@ -33,64 +32,53 @@ class LoginForm extends Component {
 
 	renderButton() {
 		if (this.props.loading) {
-			return <Spinner size="large" />
+			return (
+				<View style={styles.spinnerStyle}>
+					<ActivityIndicator size={'large'} />
+				</View>
+			)
 		}
-
 		return (
-			<Button onPress={this.onButtonPress.bind(this)}>
-				Login
-			</Button>
+			<TouchableOpacity style={styles.buttonContainer} onPress={this.onButtonPress.bind(this)}>
+				<Text style={styles.buttonText}>
+					Log In
+				</Text>
+			</TouchableOpacity>
 		)
 	}
 	render() {
 		return (
-			<View style={{backgroundColor: '#247BA0', flex: 1}}>
-				<View style={styles.loginContainer}>
+			<View style={styles.containerStyle}>
+				<View style={styles.logoContainer}>
 					<Image resizeMode="contain" style={styles.logo} source={require('../images/logo.png')} />
 
 		 		</View>
-
-				<CardSection>
-					<Input
-						placeholder="email@example.com"
-						onChangeText={this.onEmailChange.bind(this)}
-						value={this.props.email}
-					/>
-				</CardSection>
-				<CardSection>
-					<Input
-						secureTextEntry
-						placeholder="password"
-						onChangeText={this.onPasswordChange.bind(this)}
-						value={this.props.password}
-					/>
-				</CardSection>
-
 				{this.renderError()}
+				<View style={styles.inputContainer}>
+					<TextInput
+						placeholder={"Email"}
+						autoCorrect={false}
+						autoCapitalize={"none"}
+						style={styles.inputStyle}
+						value={this.props.email}
+						onChangeText={this.onEmailChange.bind(this)}
+						placeholderTextColor="#FFFAD5"
+					/>
 
-				<CardSection>
+					<TextInput
+						secureTextEntry
+						placeholder={"Password"}
+						autoCorrect={false}
+						style={styles.inputStyle}
+						value={this.props.password}
+						onChangeText={this.onPasswordChange.bind(this)}
+						placeholderTextColor="#FFFAD5"
+					/>
+
 					{this.renderButton()}
-				</CardSection>
+				</View>
 		</View>
 		);
-	}
-}
-
-const styles = {
-	errorTextStyles: {
-		fontSize: 20,
-		alignSelf: 'center',
-		color: 'red',
-	},
-	loginContainer:{
-		alignItems: 'center',
-		flexGrow: 1,
-		justifyContent: 'center'
-	},
-	logo: {
-			position: 'absolute',
-			width: 300,
-			height: 100
 	}
 }
 
