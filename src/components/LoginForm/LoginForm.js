@@ -46,35 +46,37 @@ class LoginForm extends Component {
 			</TouchableOpacity>
 		)
 	}
+
 	render() {
 		return (
 			<View style={styles.containerStyle}>
 				<View style={styles.logoContainer}>
-					<Image resizeMode="contain" style={styles.logo} source={require('../images/logo.png')} />
-
+					<Image resizeMode="contain" style={styles.logo} source={require('../images/logo/logo.png')} />
 		 		</View>
 				{this.renderError()}
 				<View style={styles.inputContainer}>
-					<TextInput
-						placeholder={"Email"}
-						autoCorrect={false}
-						autoCapitalize={"none"}
-						style={styles.inputStyle}
-						value={this.props.email}
-						onChangeText={this.onEmailChange.bind(this)}
-						placeholderTextColor="#FFFAD5"
-					/>
-
-					<TextInput
-						secureTextEntry
-						placeholder={"Password"}
-						autoCorrect={false}
-						style={styles.inputStyle}
-						value={this.props.password}
-						onChangeText={this.onPasswordChange.bind(this)}
-						placeholderTextColor="#FFFAD5"
-					/>
-
+					<View >
+						<TextInput
+							placeholder={"Email"}
+							autoCorrect={false}
+							autoCapitalize={"none"}
+							style={styles.inputStyle}
+							value={this.props.email}
+							onChangeText={this.onEmailChange.bind(this)}
+							placeholderTextColor="#595959"
+						/>
+					</View>
+					<View >
+						<TextInput
+							secureTextEntry
+							placeholder={"Password"}
+							autoCorrect={false}
+							style={styles.inputStyle}
+							value={this.props.password}
+							onChangeText={this.onPasswordChange.bind(this)}
+							placeholderTextColor="#595959"
+						/>
+					</View>
 					{this.renderButton()}
 				</View>
 		</View>
@@ -84,7 +86,7 @@ class LoginForm extends Component {
 
 const mapStateToProps = ({auth}) => {
 	const { email, password, error, loading } = auth;
-	return { email, password, error, loading};
+	return { email, password, error, loading };
 };
 
 export default connect(mapStateToProps, { emailChanged, passwordChanged, loginUser })(LoginForm);
