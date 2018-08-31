@@ -24,7 +24,14 @@ export const loginUser = ({ email, password }) => {
 			.then(user => loginUserSuccess(dispatch, user))
 			.catch(() => {
 				firebase.auth().createUserWithEmailAndPassword(email,password)
-					.then(user => loginUserSuccess(dispatch, user))
+					.then(user => {
+						const { currentUser } = firebase.auth();
+						let userRef = firebase.database().ref(`/users/${currentUser.uid}`)
+						userRef.set({
+							email: email
+						})
+						loginUserSuccess(dispatch, user)
+					})
 					.catch(user => loginUserFail(dispatch, user));
 			});
 	};
