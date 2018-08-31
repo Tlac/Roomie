@@ -2,11 +2,8 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
 	containerStyle: {
-		backgroundColor: '#105B63',
+		backgroundColor: '#1A1E1F',
 		flex: 1,
-	},
-	errorContainer: {
-		backgroundColor: '#105B63'
 	},
 	spinnerStyle: {
 		flex: 1,
@@ -26,14 +23,16 @@ export default StyleSheet.create({
 		color: '#FFFAD5',
 	},
 	buttonContainer: {
-		backgroundColor: '#FFD34E',
+		backgroundColor: '#45BF55',
     paddingVertical: 15,
 		borderRadius:5,
-		borderWidth: 1,
-    borderColor: '#BD4932'
+		marginTop: 2,
+	},
+	errorContainer: {
+		backgroundColor: '#1A1E1F'
 	},
 	buttonText: {
-		color: '#BD4932',
+		color: '#FFFAD5',
     textAlign: 'center',
     fontWeight: '700',
 	},
@@ -49,7 +48,7 @@ export default StyleSheet.create({
 	},
 	logo: {
 			position: 'absolute',
-			width: 360,
+			width: 300,
 			height: 120,
 	}
 });
