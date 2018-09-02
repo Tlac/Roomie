@@ -28,8 +28,8 @@ export const loginUser = ({ email, password }) => {
 						const { currentUser } = firebase.auth();
 						let userRef = firebase.database().ref(`/users/${currentUser.uid}`)
 						userRef.set({
-							email: email
-							surveyTaken: false 
+							email: email,
+							surveyTaken: false
 						})
 						loginUserSuccess(dispatch, user)
 					})

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Image, TextInput, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { Text, View, Image, TextInput, TouchableOpacity, ActivityIndicator, StatusBar } from 'react-native';
 import { connect } from 'react-redux';
 import { emailChanged, passwordChanged, loginUser } from '../../actions';
 import styles from './LoginForm-style';
@@ -50,6 +50,9 @@ class LoginForm extends Component {
 	render() {
 		return (
 			<View style={styles.containerStyle}>
+				<StatusBar
+					barStyle="light-content"
+				/>
 				<View style={styles.logoContainer}>
 					<Image resizeMode="contain" style={styles.logo} source={require('../images/logo/logo.png')} />
 		 		</View>
