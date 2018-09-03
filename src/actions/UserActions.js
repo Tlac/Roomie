@@ -1,5 +1,5 @@
 import firebase from 'firebase';
-import { USER_DATA_FETCH_SUCCESS } from './types';
+import { USER_DATA_FETCH_SUCCESS, FETCH_ALL_USERS } from './types';
 
 export const userDataFetch = () => {
 	const { currentUser } = firebase.auth();
@@ -12,5 +12,18 @@ export const userDataFetch = () => {
 					payload: snapshot.val()
 				});
 			});
+	}
+}
+
+export const fetchAllUsers = () => {
+	const { currentUser } = firebase.auth();
+	return (dispatch) => {
+		firebase.database().ref('/users')
+			.on('value', snapshot => {
+				dispatch({
+					type: FETCH_ALL_USERS,
+					payload: snapshot.val()
+				});
+			})
 	}
 }
