@@ -24,7 +24,7 @@ npm install
 
 ### Create a .env file in the root directory and add the following
 ```
-API_KEY="YOUR API KEY "
+API_KEY="YOUR API KEY"
 AUTH_DOMAIN="YOUR AUTH DOMAIN"
 DATABASE_URL="YOUR DATABASE URL"
 PROJECT_ID="YOUR PROJECT ID"
