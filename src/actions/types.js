@@ -9,4 +9,6 @@ export const FETCH_ALL_USERS = 'fetch_all_users';
 export const FIRST_NAME_CHANGED = 'first_name_changed';
 export const LAST_NAME_CHANGED = 'last_name_changed';
 export const ROOMMATE_FIND_CHANGED = 'roommate_find_changed';
+export const PET_FRIENDLY_CHANGE = 'pet_friendly_changed';
+export const REQUIRE_PARKING_CHANGE = 'require_parking_change';
 export const SUBMIT_SURVEY = 'submit_survey';

@@ -3,6 +3,8 @@ import { Text, View, Image, TextInput, TouchableOpacity, ActivityIndicator, Stat
 import { connect } from 'react-redux';
 import { emailChanged, passwordChanged, loginUser } from '../../actions';
 import styles from './LoginForm-style';
+import { Actions } from 'react-native-router-flux';
+import firebase from 'firebase';
 
 class LoginForm extends Component {
 	onEmailChange(text) {

@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import { userDataFetch, fetchAllUsers } from '../../actions';
-import { View, Text, ActivityIndicator, StatusBar, FlatList } from 'react-native';
+import { View, Text, ActivityIndicator, StatusBar, FlatList, TouchableOpacity } from 'react-native';
 import styles from './HomePage-style';
 import UserSurvey from '../UserSurvey/UserSurvey';
+import firebase from 'firebase';
+import { Actions } from 'react-native-router-flux';
 
 class HomePage extends Component {
 	componentWillMount() {
@@ -25,6 +27,15 @@ class HomePage extends Component {
 		const { firstName, lastName } = user.surveyInfo;
 		return <Text>{`${user.surveyInfo.firstName} ${user.surveyInfo.lastName}`}</Text>
 	}
+	onButtonPress() {
+		console.log("hello!");
+		firebase.auth().signOut().then(() => {
+			console.log("successful log off");
+			Actions.auth();
+		}, (error) => {
+			console.log(error);
+		});
+	}
 	renderHomePage() {
 		return (
 			<View>
@@ -37,10 +48,16 @@ class HomePage extends Component {
 					renderItem={({item}) => this.renderItem(item)}
 					keyExtractor={(user) => user.uid}
 				/>
+				<TouchableOpacity style={styles.buttonContainer} onPress={this.onButtonPress.bind(this)}>
+					<Text style={styles.buttonText}>
+						Log off
+					</Text>
+				</TouchableOpacity>
 			</View>
 		)
 	}
 	render() {
+		console.log(firebase.auth().currentUser);
 		if (this.props.loading) {
 			return (
 				<View style={styles.spinnerStyle}>
