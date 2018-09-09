@@ -1,14 +1,14 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
 	containerStyle: {
-		backgroundColor: '#1A1E1F',
+		backgroundColor: "#1A1E1F",
 		flex: 1,
 	},
 	spinnerStyle: {
 		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center',
+		justifyContent: "center",
+		alignItems: "center",
 	},
 	inputContainer: {
 		paddingLeft:40,
@@ -20,35 +20,35 @@ export default StyleSheet.create({
 		paddingLeft: 10,
 		paddingRight: 10,
 		fontSize: 18,
-		color: '#FFFAD5',
+		color: "#FFFAD5",
 	},
 	buttonContainer: {
-		backgroundColor: '#45BF55',
+		backgroundColor: "#45BF55",
     paddingVertical: 15,
 		borderRadius:5,
 		marginTop: 2,
 	},
 	errorContainer: {
-		backgroundColor: '#1A1E1F'
+		backgroundColor: "#1A1E1F"
 	},
 	buttonText: {
-		color: '#FFFAD5',
-    textAlign: 'center',
-    fontWeight: '700',
+		color: "#FFFAD5",
+    textAlign: "center",
+    fontWeight: "700",
 	},
 	errorTextStyles: {
 		fontSize: 20,
-		alignSelf: 'center',
-		color: '#F25F5C',
+		alignSelf: "center",
+		color: "#F25F5C",
 	},
-	logoContainer:{
-		alignItems: 'center',
+	logoContainer: {
+		alignItems: "center",
 		flexGrow: 1,
-		justifyContent: 'center'
+		justifyContent: "center"
 	},
 	logo: {
-			position: 'absolute',
-			width: 300,
-			height: 120,
+		position: "absolute",
+		width: 300,
+		height: 120,
 	}
 });

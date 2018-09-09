@@ -1,4 +1,4 @@
-import { USER_DATA_FETCH_SUCCESS, FETCH_ALL_USERS } from '../actions/types';
+import { USER_DATA_FETCH_SUCCESS, FETCH_ALL_USERS } from "../actions/types";
 
 const INITIAL_STATE = {
 	loading: true,
