@@ -1,7 +1,7 @@
-import React from 'react';
-import { Scene, Router } from 'react-native-router-flux';
-import LoginForm from './components/LoginForm/LoginForm';
-import HomePage from './components/HomePage/HomePage';
+import React from "react";
+import { Scene, Router } from "react-native-router-flux";
+import LoginForm from "./components/LoginForm/LoginForm";
+import HomePage from "./components/HomePage/HomePage";
 
 const RouterComponent = () => {
 	return (

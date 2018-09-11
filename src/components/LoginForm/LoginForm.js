@@ -1,8 +1,10 @@
-import React, { Component } from 'react';
-import { Text, View, Image, TextInput, TouchableOpacity, ActivityIndicator } from 'react-native';
-import { connect } from 'react-redux';
-import { emailChanged, passwordChanged, loginUser } from '../../actions';
-import styles from './LoginForm-style';
+import React, { Component } from "react";
+import { Text, View, Image, TextInput, TouchableOpacity, ActivityIndicator, StatusBar } from "react-native";
+import { connect } from "react-redux";
+import { emailChanged, passwordChanged, loginUser } from "../../actions";
+import styles from "./LoginForm-style";
+import { Actions } from "react-native-router-flux";
+import firebase from "firebase";
 
 class LoginForm extends Component {
 	onEmailChange(text) {
@@ -34,7 +36,7 @@ class LoginForm extends Component {
 		if (this.props.loading) {
 			return (
 				<View style={styles.spinnerStyle}>
-					<ActivityIndicator size={'large'} />
+					<ActivityIndicator size={"large"} />
 				</View>
 			)
 		}
@@ -50,12 +52,15 @@ class LoginForm extends Component {
 	render() {
 		return (
 			<View style={styles.containerStyle}>
+				<StatusBar
+					barStyle="light-content"
+				/>
 				<View style={styles.logoContainer}>
-					<Image resizeMode="contain" style={styles.logo} source={require('../images/logo/logo.png')} />
+					<Image resizeMode="contain" style={styles.logo} source={require("../images/logo/logo.png")} />
 		 		</View>
 				{this.renderError()}
 				<View style={styles.inputContainer}>
-					<View >
+					<View>
 						<TextInput
 							placeholder={"Email"}
 							autoCorrect={false}
@@ -66,7 +71,7 @@ class LoginForm extends Component {
 							placeholderTextColor="#595959"
 						/>
 					</View>
-					<View >
+					<View>
 						<TextInput
 							secureTextEntry
 							placeholder={"Password"}
