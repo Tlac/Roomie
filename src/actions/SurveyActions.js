@@ -14,6 +14,7 @@ import {
 	SUBMIT_SURVEY,
 	 } from "./types";
 import firebase from "firebase";
+import { Actions } from "react-native-router-flux";
 
 export const firstNameChanged = (text) => {
 	return {
@@ -132,5 +133,6 @@ export const submitSurvey = ({
 			surveyTaken: true
 		});
 		dispatch({type: SUBMIT_SURVEY});
+		Actions.main();
 	}
 }
