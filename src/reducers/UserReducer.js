@@ -14,7 +14,7 @@ export default (state= INITIAL_STATE, action) => {
 		case USER_DATA_FETCH_SUCCESS:
 			return { ...state, loading: false, user: action.payload };
 		case FETCH_ALL_USERS:
-			return { ...state, allUsers: action.payload}
+			return { ...state, loading: false, allUsers: action.payload}
 		default:
 			return state;
 	}

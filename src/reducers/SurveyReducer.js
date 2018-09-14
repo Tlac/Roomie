@@ -25,7 +25,7 @@ const INITIAL_STATE = {
 	smokeRegularly: true,
 	dietInfo: "everything",
 	cookFrequency: "everyday",
-	sleeperType: "light_sleeper",
+	sleepType: "light_sleeper",
 	cleaningFrequency: "everyday",
 };
 

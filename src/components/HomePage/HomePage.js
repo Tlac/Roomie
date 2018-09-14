@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import _ from "lodash";
 import { connect } from "react-redux";
-import { userDataFetch, fetchAllUsers } from "../../actions";
+import { fetchAllUsers } from "../../actions";
 import { View, Text, ActivityIndicator, StatusBar, FlatList, TouchableOpacity } from "react-native";
 import styles from "./HomePage-style";
 import UserSurvey from "../UserSurvey/UserSurvey";
@@ -10,26 +10,16 @@ import { Actions } from "react-native-router-flux";
 
 class HomePage extends Component {
 	componentWillMount() {
-			this.props.userDataFetch();
 			this.props.fetchAllUsers();
 	}
-	renderSurvey() {
-		return (
-			<View>
-				<StatusBar
-					barStyle="dark-content"
-				/>
-				<UserSurvey/>
-			</View>
-		)
-	}
+
 	renderItem(user) {
 		const { firstName, lastName } = user.surveyInfo;
 		return <Text>{`${user.surveyInfo.firstName} ${user.surveyInfo.lastName}`}</Text>
 	}
 	onButtonPress() {
 		firebase.auth().signOut().then(() => {
-			Actions.auth();
+			Actions.login();
 		});
 	}
 	renderHomePage() {
@@ -62,7 +52,7 @@ class HomePage extends Component {
 		} else {
 			return (
 				<View>
-					{this.props.userHasTakenSurvey ? this.renderHomePage() : this.renderSurvey()}
+					{this.renderHomePage()}
 				</View>
 			);
 		}
@@ -86,4 +76,4 @@ const mapStateToProps = state => {
 	};
 }
 
-export default connect(mapStateToProps, {userDataFetch, fetchAllUsers})(HomePage);
+export default connect(mapStateToProps, { fetchAllUsers })(HomePage);

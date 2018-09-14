@@ -3,7 +3,7 @@
 */
 
 import React, { Component } from "react";
-import { View, Text, TextInput, TouchableOpacity, ScrollView } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, StatusBar, ScrollView } from "react-native";
 import { connect } from "react-redux";
 import styles from "./UserSurvey-style";
 import {
@@ -135,6 +135,7 @@ class UserSurvey extends Component {
 	render() {
 		return (
 			<ScrollView style={styles.container}>
+				<StatusBar barStyle="dark-content" />
 				<Text style={{paddingBottom: 15}}>
 					Thank you for signing up, please a few minutes to answer the questions in this survey and we’ll match you with potential roommates.
 				</Text>

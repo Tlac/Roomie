@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Text, View, Image, TextInput, TouchableOpacity, ActivityIndicator, StatusBar } from "react-native";
 import { connect } from "react-redux";
-import { emailChanged, passwordChanged, loginUser } from "../../actions";
+import { emailChanged, passwordChanged, loginUser, resetState } from "../../actions";
 import styles from "./LoginForm-style";
 import { Actions } from "react-native-router-flux";
 import firebase from "firebase";
@@ -19,7 +19,10 @@ class LoginForm extends Component {
 		const { email, password } = this.props;
 		this.props.loginUser({ email, password});
 	}
-
+	goToSignUpPage() {
+		this.props.resetState();
+		Actions.createUser();
+	}
 	renderError() {
 		if (this.props.error) {
 			return (
@@ -41,11 +44,14 @@ class LoginForm extends Component {
 			)
 		}
 		return (
-			<TouchableOpacity style={styles.buttonContainer} onPress={this.onButtonPress.bind(this)}>
-				<Text style={styles.buttonText}>
-					Log In
-				</Text>
-			</TouchableOpacity>
+			<View>
+				<TouchableOpacity style={styles.buttonContainer} onPress={this.onButtonPress.bind(this)}>
+					<Text style={styles.buttonText}>
+						Log In
+					</Text>
+				</TouchableOpacity>
+				<Text onPress={this.goToSignUpPage.bind(this)} style={styles.signUpText}>Don't have an account yet? Sign up!</Text>
+		</View>
 		)
 	}
 
@@ -67,8 +73,8 @@ class LoginForm extends Component {
 							autoCapitalize={"none"}
 							style={styles.inputStyle}
 							value={this.props.email}
-							onChangeText={this.onEmailChange.bind(this)}
 							placeholderTextColor="#595959"
+							onChangeText={this.onEmailChange.bind(this)}
 						/>
 					</View>
 					<View>
@@ -78,8 +84,8 @@ class LoginForm extends Component {
 							autoCorrect={false}
 							style={styles.inputStyle}
 							value={this.props.password}
-							onChangeText={this.onPasswordChange.bind(this)}
 							placeholderTextColor="#595959"
+							onChangeText={this.onPasswordChange.bind(this)}
 						/>
 					</View>
 					{this.renderButton()}
@@ -94,4 +100,4 @@ const mapStateToProps = ({auth}) => {
 	return { email, password, error, loading };
 };
 
-export default connect(mapStateToProps, { emailChanged, passwordChanged, loginUser })(LoginForm);
+export default connect(mapStateToProps, { emailChanged, passwordChanged, loginUser, resetState })(LoginForm);

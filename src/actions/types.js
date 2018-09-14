@@ -1,10 +1,15 @@
 export const EMAIL_CHANGED = "email_changed";
 export const PASSWORD_CHANGED = "password_changed";
+export const PASSWORD_CONFIRM_CHANGED = "password_confirm_changed"
 export const LOGIN_USER_SUCCESS = "login_user_success";
 export const LOGIN_USER_FAIL = "login_user_fail";
 export const LOGIN_USER = "login_user";
+export const CREATE_USER = "create_user";
+export const CREATE_USER_FAIL = "create_user_fail";
 export const USER_DATA_FETCH_SUCCESS = "user_data_fetch_success";
 export const FETCH_ALL_USERS = "fetch_all_users";
+export const RESET_STATE = "reset_state";
+export const DISPLAY_PASSWORD_ERROR = "display_password_error";
 
 export const FIRST_NAME_CHANGED = "first_name_changed";
 export const LAST_NAME_CHANGED = "last_name_changed";
