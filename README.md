@@ -37,3 +37,13 @@ Run on an ios simulator
 ```
 react-native run-ios
 ``` 
+
+## To do list
+* Add profile page
+* Make login persistent 
+* Add main page with a card component to go through potential users
+* Filter and sort users based on their roommate criteria
+* Add Chat 
+* Add fb login
+* Add password reset
+
